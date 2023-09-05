@@ -6,8 +6,8 @@
 
 
 
-let grade = function (student, total) {
-    let percent = (student / total) * 100 
+const grade = function (student, total) {
+    const percent = (student / total) * 100 
 
     if (percent >= 90 && percent <= 100) {
         return `You got an A (${percent}%)!`
