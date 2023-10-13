@@ -1,26 +1,53 @@
-// create a list of 5 todos
-// print length; you have x todos
-// print the first and second to last item strings (format with Todo: ...)
+const todo = [{
+    text: 'go to the gym',
+    complete: true
+},
+{
+    text: 'wash Miley',
+    complete: false
+},
+{
+    text: 'iron t-shirts',
+    complete: true
+},
+{
+    text: 'cook ground beef',
+    complete: true
+},
+{
+    text: 'stretch',
+    complete: false
+}]
 
-const todo = ['go to the gym', 'wash Miley', 'iron t-shirts', 'cook ground beef', 'stretch']
-// console.log(`Todo: ${todo[0]}, ${todo[3]}`)
+// 1. Convert array to array of objects --> text, completed
+// 2. Create a function to remove the todo by text value
 
-// delete 3rd item
-// remove first item
-// add new to end
+const deleteTodo = function (todo, todoText) {
+   const index = todo.findIndex(function (todo) {
+    return todo.text.toLowerCase() === todoText.toLowerCase()
+   })
+    if (index > -1) {
+        todo.splice(index, 1)
+    }
+}
+const getThingsToDo = function (todo) {
+return todo.filter(function (todo) {
+    return !todo.complete                       // Filters out items where complete is false
+        }
+    )
+}
 
-// 1. The first item
-// 2. The second item
+const sortTodos = function (todo) {
+    todo.sort(function (a, b) {
+        if (a.complete < b.complete) {                  // if (!a.complete && b.complete) {}
+            return -1
+        } else if (b.complete < a.complete) {           // if (!b.complete && a.complete) {}
+            return 1
+        } else {                                        // ^ another condition setup option
+            return 0
+        }
+    } )
+} 
 
-// todo.splice(2, 1)
-// todo.shift()
-// todo.push('New item')
-//console.log(todo)
-
-console.log(`You have ${todo.length} items on your list.`)
-
-todo.forEach(function (item, index){
-    const num = index + 1
-    console.log(`${num}. ${item}`)
-})
-
+sortTodos(todo)
+console.log(todo)

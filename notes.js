@@ -1,23 +1,46 @@
-const notes = ['Note 1', 'Note 2', 'Note 3']
+const notes = [{
+title: 'My next trip:',
+body: 'I would like to go to Spain'
+}, {
+title: 'Habits to work on:',
+body: 'Exercise, eating better.'
+}, {
+title:'Office modifications:',
+body: 'Get a new seat.'
+}]
+// const findNote = function (notes, noteTitle) {
+// }
+// console.log(notes)
+// console.log(notes.length)
 
+// const noteFinder = notes.findIndex(function (noteTitle, index) {
+//     const index = notes.findIndex(function (notes, index){
+//     return note.title.toLowerCase() === noteTitle.title.toLowerCase()
+// })})
+// return notes[index]
 
+//console.log('a' < 'b') //check if a comes before b alphabetically
 
-// console.log(notes.pop())
-// notes.push('my new note')
+const filteredNotes = function (notes, query) {
+return notes.filter(function (notes, item) {
+    const isTitleMatch = notes.title.toLowerCase().includes(query.toLowerCase())
+    const isBodyMatch = notes.body.toLowerCase().includes(query.toLowerCase())
+    return isTitleMatch || isBodyMatch
+})}
+// console.log(filteredNotes(notes, 'work'))
 
-// console.log(notes.shift())
-// console.log(notes.unshift('my new note'))
+const sortNotes = function (notes) {
+    notes.sort(function (a, b) {
+        if (a.title.toLowerCase() < b.title.toLowerCase()) {
+            return -1
+        } else if (b.title.toLowerCase() < a.title.toLowerCase()) {
+            return 1
+        } else {
+            return 0
+        }
+    } )
+} 
 
-// notes.splice(1, 0, 'This is my new second item')
-
-// notes[2] = 'this is now the new note 3'
-
-
-
-notes.forEach(function (){
-    console.log('testing123')
-})
-
+sortNotes(notes)
 console.log(notes)
-console.log(notes[notes.length - 1])
 
